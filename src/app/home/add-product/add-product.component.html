@@ -1,0 +1,67 @@
+<mat-horizontal-stepper [linear]="true">
+  <!-- Step 1: General information -->
+  <mat-step [stepControl]="generalInfoForm" errorMessage="General information is required.">
+    <form [formGroup]="generalInfoForm">
+      <ng-template matStepLabel>Fill general information</ng-template>
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Name" formControlName="name" required>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-label>Description</mat-label>
+        <textarea matInput placeholder="Description" formControlName="description" required></textarea>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-label>Price</mat-label>
+        <input matInput type="number" placeholder="Price" formControlName="price" min="0" required>
+      </mat-form-field>
+      <br>
+      <mat-checkbox [(ngModel)]="isNew" [ngModelOptions]="{standalone: true}">Is New</mat-checkbox>
+      <br>
+      <mat-form-field>
+        <mat-label>Location</mat-label>
+        <input matInput placeholder="Location" formControlName="location" required>
+      </mat-form-field>
+      <form>
+        <mat-label for="images">Images&nbsp;</mat-label>
+        <input type="file" multiple id="images" (change)="selectImages($event)" required>
+      </form>
+      <br>
+      <button mat-button matStepperNext [disabled]="this.firebaseImagesURL.length==0">Next</button>
+    </form>
+  </mat-step>
+
+  <!-- Step 2: Select category -->
+  <mat-step [stepControl]="categoriesForm" errorMessage="Categories are required.">
+    <form [formGroup]="categoriesForm">
+      <ng-template matStepLabel>Fill categories and subcategories</ng-template>
+      <mat-list>
+        <mat-list-item *ngFor="let category of categories; let i = index" class="hover-list-item"
+                       (click)="setCategory(i)">
+          {{ category.name }}
+        </mat-list-item>
+      </mat-list>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button matStepperNext [disabled]="selectedCategories.length==0" (click)="initAttributes()">Next
+      </button>
+    </form>
+  </mat-step>
+
+  <!-- Step 3: Fill in attribute values -->
+  <mat-step [stepControl]="attributesForm" errorMessage="Attribute values are required.">
+    <form [formGroup]="attributesForm" (ngSubmit)="addProduct()">
+      <ng-template matStepLabel>Fill attribute information</ng-template>
+      <div *ngFor="let attribute of attributes">
+        <mat-form-field>
+          <mat-label>{{ attribute.name }}</mat-label>
+          <input matInput [formControlName]="attribute.id" required>
+        </mat-form-field>
+        <br>
+      </div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button [disabled]="!attributesForm!.valid">Submit</button>
+    </form>
+  </mat-step>
+</mat-horizontal-stepper>

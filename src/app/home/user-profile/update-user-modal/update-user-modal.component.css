@@ -1,0 +1,24 @@
+* {
+    box-sizing: border-box;
+}
+
+.update-user-card {
+    padding: 1rem;
+    width: 30rem;
+}
+
+button {
+    margin-right: 1rem;
+}
+
+::-webkit-resizer {
+    display: none;
+}
+
+mat-form-field{
+    width: 100%;
+}
+
+#avatarLabel{
+    margin-right: 10px;
+}

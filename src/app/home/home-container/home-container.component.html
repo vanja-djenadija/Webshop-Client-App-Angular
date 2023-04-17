@@ -1,0 +1,42 @@
+<div class="main-div">
+  <mat-toolbar class="toolbar">
+    <img width="40" alt="WebShop Logo"
+      src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==" />
+    <span routerLink="">Web Shop</span>
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+    <!--<ng-component *ngIf="!user; else templateMenu">-->
+      <button id="logInBtn" mat-fab extended color="basic" routerLink="auth/login">
+        <mat-icon>person</mat-icon>
+        Log in
+      </button>
+   <!-- </ng-component>-->
+    <!--<ng-template #templateMenu>-->
+      <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="/profile">
+          <mat-icon>person</mat-icon>
+          My profile
+        </button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item (click)="openAddProductDialog()">
+          <mat-icon>post_add</mat-icon>
+          New offer
+        </button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item (click)="openCustomerSupportDialog()">
+          <mat-icon>help</mat-icon>
+          Customer support
+        </button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>logout</mat-icon>
+          Log out
+        </button>
+      </mat-menu>
+    <!--</ng-template>-->
+  </mat-toolbar>
+  <div class="content">
+    <router-outlet> </router-outlet>
+  </div>
+</div>

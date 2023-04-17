@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "webshop-image": {
+      "hosting": {
+        "webshop": [
+          "webshop-image"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "webshop-image"
+  }
+}

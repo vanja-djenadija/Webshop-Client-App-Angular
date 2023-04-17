@@ -1,0 +1,12 @@
+<mat-card class="product-card">
+  <mat-card-content routerLink="/product/{{id}}">
+    <img mat-card-image src="{{imageUrl}}" alt="Product image">
+    <p><strong>{{ name }}</strong></p>
+    <div>{{ price }} $</div>
+  </mat-card-content>
+  <mat-card-actions *ngIf="deleteButton" align="end">
+    <button mat-mini-fab color="primary" (click)="deleteProduct()">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

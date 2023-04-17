@@ -1,0 +1,92 @@
+* {
+  box-sizing: border-box;
+}
+
+.pagination::ng-deep .ngx-pagination .current {
+  background: #d2193e;
+  border-radius: 30px;
+}
+
+.cards-container {
+  margin: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-column-gap: 1rem;
+  grid-row-gap: 1rem;
+  min-height: 80vh;
+}
+
+.search-bar {
+  min-width: 30rem;
+  max-width: 50rem;
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.products-header {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 80px;
+  padding: 0.5rem;
+  background-color: rgb(232, 222, 225);
+}
+
+#searchIcon {
+  padding: 10px;
+}
+
+.products-footer {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  padding: 1rem;
+  background-color: rgb(232, 222, 225);
+}
+
+.filter-sidebar {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 15rem;
+  padding: 1rem;
+}
+
+.categories-tree {
+  background-color: transparent;
+}
+
+.categories-tree-invisible {
+  display: none;
+}
+
+.mat-nested-tree-node div[role=group] {
+  padding-left: 30px;
+}
+
+.mat-tree-node:hover {
+  color: #d2193e;
+}
+
+.leafNode {
+  padding-left: 48px;
+}
+
+.mat-mdc-slider {
+  width: 100%;
+}
+
+.price-field{
+  width: 8rem;
+}

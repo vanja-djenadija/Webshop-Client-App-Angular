@@ -1,0 +1,131 @@
+<ng-container *ngIf="currentProduct">
+  <h1 id="productName">{{ currentProduct.name }} </h1>
+  <mat-tab-group animationDuration="0ms" mat-stretch-tabs="false" mat-align-tabs="start">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="tab-icon">info</mat-icon>
+        Information
+      </ng-template>
+      <div class="column-container">
+        <button *ngIf="this.tokenService.getUser()!= null" mat-raised-button color="primary" style="width: fit-content" (click)="openPurchaseModal()">
+          Purchase
+        </button>
+        <h3>General information</h3>
+        <div class="row-container">
+          <mat-card>
+            <mat-card-title>
+              <mat-icon class="card-icon">attach_money</mat-icon>
+              Price
+            </mat-card-title>
+            <mat-card-content>
+              {{ currentProduct.price }}$
+            </mat-card-content>
+          </mat-card>
+          <mat-card>
+            <mat-card-title>
+              <mat-icon class="card-icon">fiber_new</mat-icon>
+              Condition
+            </mat-card-title>
+            <mat-card-content>
+              {{ currentProduct.isNew ? 'Yes' : 'No'}}
+            </mat-card-content>
+          </mat-card>
+          <mat-card>
+            <mat-card-title>
+              <mat-icon class="card-icon">my_location</mat-icon>
+              Location
+            </mat-card-title>
+            <mat-card-content>
+              {{ currentProduct.location }}
+            </mat-card-content>
+          </mat-card>
+          <mat-card>
+            <mat-card-title>
+              <mat-icon class="card-icon">date_range</mat-icon>
+              Create date
+            </mat-card-title>
+            <mat-card-content>
+              {{ currentProduct.createDate }}
+            </mat-card-content>
+          </mat-card>
+          <mat-card>
+            <mat-card-title>
+              <mat-icon class="card-icon">description</mat-icon>
+              Description
+            </mat-card-title>
+            <mat-card-content>
+              {{ currentProduct.description }}
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <mat-divider></mat-divider>
+        <h3>Specific information</h3>
+        <div class="row-container">
+          <mat-card *ngFor="let attribute of currentProduct.attributes">
+            <mat-card-title>
+              <mat-icon class="card-icon">info</mat-icon>
+              {{ attribute.attribute.name }}
+            </mat-card-title>
+            <mat-card-content>
+              {{ attribute.value }}
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <mat-divider></mat-divider>
+        <h3>Seller</h3>
+        <mat-card>
+          <mat-card-header>
+            <div mat-card-avatar class="avatar-image"
+                 [style.background-image]="'url(' + currentProduct.seller.avatarUrl + ')'"></div>
+            <mat-card-title>{{ currentProduct.seller.firstName + " " +
+            currentProduct.seller.lastName}}</mat-card-title>
+            <mat-card-subtitle>{{currentProduct.seller.phoneNumber}}</mat-card-subtitle>
+          </mat-card-header>
+        </mat-card>
+      </div>
+    </mat-tab>
+    <!--Second tab - Images -->
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="tab-icon">image</mat-icon>
+        Images
+      </ng-template>
+      <ng-image-slider *ngIf="imageObject" [images]="imageObject" [infinite]="false" [autoSlide]="1" slideImage="1"
+                       class="image-slider" [imageSize]="{width: 'auto', height: 'auto', space: 5}">
+      </ng-image-slider>
+    </mat-tab>
+    <!--Third tab: Comments-->
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="tab-icon">comment</mat-icon>
+        Comments
+      </ng-template>
+      <div class="column-container">
+        <h3>Add new comment</h3>
+        <form [formGroup]="commentForm" (ngSubmit)="addComment()">
+          <mat-form-field class="full-width">
+            <mat-label>Leave a comment</mat-label>
+            <textarea matInput placeholder="Ex. What about..." style="min-height: 5rem;"
+                      maxlength="256" formControlName="comment" required></textarea>
+          </mat-form-field>
+          <button mat-raised-button color="primary" id="addCommentButton" type="submit">Add comment</button>
+        </form>
+        &nbsp;
+        <mat-divider></mat-divider>
+        <h3>All comments</h3>
+        <mat-card *ngFor="let comment of currentProduct.comments" class="comment-card">
+          <mat-card-header>
+            <div mat-card-avatar class="avatar-image"
+                 [style.background-image]="'url(' + comment.user.avatarUrl + ')'">
+            </div>
+            <mat-card-title>{{ comment.user.firstName }}</mat-card-title>
+            <mat-card-subtitle>{{ comment.dateTime | date:'dd.MM.yyyy HH:mm:ss' }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>{{ comment.content }}</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</ng-container>

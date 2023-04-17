@@ -1,0 +1,44 @@
+  .spacer {
+      flex: 1;
+  }
+
+  .toolbar {
+      position: static;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 80px;
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      background-color: #d2193e;
+      color: white;
+      font-weight: 600;
+  }
+
+  .full-width {
+      width: 100%;
+  }
+
+  .toolbar mat-form-field {
+      margin-top: 20px;
+  }
+
+  .toolbar img {
+      margin: 0 16px;
+  }
+
+  .toolbar #logInBtn {
+      height: 40px;
+      margin: 0 8px;
+  }
+
+  .toolbar #addNewOfferBtn {
+      height: 40px;
+      margin: 0 16px;
+  }
+
+  .toolbar #logInBtn:hover,
+  .toolbar #addNewOfferBtn:hover {
+      opacity: 0.8;
+  }

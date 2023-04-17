@@ -1,0 +1,68 @@
+<div class="row-container">
+  <div class="left">
+    <mat-card>
+      <mat-card-header style="justify-content: center;">
+        <img [src]="user?.avatarUrl" width="200" height="200" class="profile-image" alt="Profile image"/>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{user?.firstName}}&nbsp;{{user?.lastName}}</p>
+      </mat-card-content>
+      <mat-card-actions style="justify-content: center;">
+        <button mat-fab extended color="primary" (click)="editProfile()">
+          <mat-icon>edit</mat-icon>
+          Edit profile
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <div class="right">
+    <mat-tab-group>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="tab-icon">reorder</mat-icon>
+          Active products
+        </ng-template>
+        <div *ngIf="activeProducts.length==0">No active products.</div>
+        <div class="cards-container">
+          <app-box *ngFor="
+                      let product of activeProducts;
+                      let i = index
+                    " [class.active]="i == currentIndexActive" (click)="setActiveProduct(product, i)" [id]="product.id"
+                   [name]="product.name" [price]="product.price" [imageUrl]="product.images[0].imageUrl"
+                   [deleteButton]="true">
+          </app-box>
+        </div>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="tab-icon">done</mat-icon>
+          Sold products
+        </ng-template>
+        <div *ngIf="soldProducts.length==0">No sold products.</div>
+        <div class="cards-container">
+          <app-box *ngFor="let product of soldProducts; let i = index
+                                    " [class.active]="i == currentIndexSold" (click)="setActiveProduct(product, i)"
+                   [id]="product.id" [name]="product.name" [price]="product.price"
+                   [imageUrl]="product.images[0].imageUrl">
+          </app-box>
+        </div>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="tab-icon">shopping_cart</mat-icon>
+          Purchased products
+        </ng-template>
+        <div *ngIf="purchasedProducts.length==0">No purchased products.</div>
+        <div class="cards-container">
+          <app-box *ngFor="
+                                      let product of purchasedProducts;
+                                      let i = index
+                                    " [class.active]="i == currentIndexPurchased" (click)="setActiveProduct(product, i)"
+                   [id]="product.id" [name]="product.name" [price]="product.price"
+                   [imageUrl]="product.images[0].imageUrl">
+          </app-box>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+* {
+    box-sizing: border-box;
+}
+
+.product-card {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.product-card img {
+    width: 100%;
+    height: 15vw;
+    object-fit:contain;
+}
+
+p {
+    white-space: nowrap
+}

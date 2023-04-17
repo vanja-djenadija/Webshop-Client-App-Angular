@@ -1,0 +1,69 @@
+* {
+  box-sizing: border-box;
+}
+
+.column-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 10px;
+}
+
+.row-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.full-width {
+  width: 100%;
+}
+
+#addCommentButton {
+  width: 10rem;
+  align-self: flex-end;
+}
+
+.seller-info {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.avatar-image {
+  background-size: cover;
+}
+
+.comment-card {
+  width: auto;
+}
+
+.tab-icon {
+  margin-right: 8px;
+}
+
+mat-card {
+  margin: 1rem;
+  width: 20rem;
+  min-height: 5rem;
+}
+
+#description-card {
+  width: auto;
+}
+
+.card-icon {
+  margin: 5px 5px 0px 5px;
+  position: relative;
+  top: 5px;
+}
+
+.center {
+  position: relative;
+  top: 50%;
+  left: 50%;
+}
+
+#productName {
+  margin: 10px;
+}

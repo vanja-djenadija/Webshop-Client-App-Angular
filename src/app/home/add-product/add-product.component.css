@@ -1,0 +1,21 @@
+.mat-mdc-form-field {
+  margin-top: 16px;
+}
+
+
+.parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+mat-form-field {
+  width: 20rem;
+}
+
+.hover-list-item:hover {
+  background-color: rebeccapurple;
+  color: white;
+}
+

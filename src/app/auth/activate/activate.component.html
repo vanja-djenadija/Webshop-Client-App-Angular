@@ -1,0 +1,24 @@
+<div class="center">
+    <mat-card class="card">
+        <mat-card-title>Account activation</mat-card-title>
+        <mat-card-content class="content">
+            <form class="form" [formGroup]="activateForm" (ngSubmit)="activate()">
+                <mat-form-field>
+                    <mat-label>Username</mat-label>
+                    <input type="text" matInput placeholder="Username" formControlName="username" required autofocus />
+                </mat-form-field><br>
+                <mat-form-field>
+                    <mat-label>PIN</mat-label>
+                    <input type="pin" matInput placeholder="PIN" formControlName="pin" required />
+                </mat-form-field>
+                <br>
+                <div class="link-container">
+                    <a routerLink="../login" class="link">Back to &nbsp;<strong> Login</strong></a>
+                </div><br>
+                <div class="button">
+                    <button type="submit" mat-fab extended color="primary">Activate</button>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

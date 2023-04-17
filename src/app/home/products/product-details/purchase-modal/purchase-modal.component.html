@@ -1,0 +1,24 @@
+<mat-card class="payment-card">
+  <mat-card-title class="payment-card-title">Payment Method</mat-card-title>
+  <mat-divider/>
+  <mat-card-content>
+    <mat-radio-group [(ngModel)]="paymentMethod">
+      <mat-radio-button value="cash-on-delivery">Cash on Delivery</mat-radio-button>
+      <mat-radio-button value="card">Card Payment</mat-radio-button>
+    </mat-radio-group>
+    <br>
+    <div *ngIf="paymentMethod === 'card'">
+      <mat-form-field>
+        <input type="number" matInput placeholder="Card Number" [(ngModel)]="cardNumber" min="0" required>
+      </mat-form-field>
+    </div>
+  </mat-card-content>
+
+  <mat-card-actions align="end">
+    <button mat-raised-button color="primary" (click)="purchase()" type="submit"
+            [disabled]="paymentMethod == 'card' &&  cardNumber == null">
+      Place Order
+    </button>
+  </mat-card-actions>
+</mat-card>
+
